@@ -65,5 +65,10 @@ public class ThymeleafController {
         return "index";
     }
 
+    //idea新增方法test
+    public void test(){
+        System.out.println("这是idea中新增的方法");
+    }
+
 
 }
