@@ -65,7 +65,7 @@ public class ThymeleafController {
         return "index";
     }
 
-    //idea新增方法test
+    //idea新增方法test=======================仓库中在线修改---------
     public void test(){
         System.out.println("这是idea中新增的方法");
     }
