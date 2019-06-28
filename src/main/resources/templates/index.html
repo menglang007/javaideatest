@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:th="http://www.thmeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title}">模板引擎首页</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/webbase.css" th:href="@{/css/pages-cart.css}"/>
+
+</head>
+<body>
+    <h1 th:text="${msg}">显示内容</h1>
+    <h2 th:text="#{message1}">消息1</h2>
+    <h2 th:text="#{message2}">消息2</h2>
+    <br>
+    ====================对象属性=======================
+    <br>
+    id:<span th:text="${user.id}"></span>
+    <br>
+    name:<span th:text="${user.name}"></span>
+    <br>
+    age:<span th:text="${user.age}"></span>
+    <br>
+    =======================图片============================
+    <br>
+    <img th:src="${map.img1}" width="25px" height="25px">
+    <br>
+    <img th:src="${map.img2}" width="100px" height="100px">
+    <br>
+    -----------------------遍历list--------------------------------
+    <br>
+    <table width="200px" style="text-align: center" border="1px">
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>index</th>
+        </tr>
+        <!--iterStat状态变量，-->
+        <tr th:each="user,iterStat:${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${iterStat.count}"></td>
+        </tr>
+
+    </table>
+    <br>
+    =========================属性赋值、拼接=================================
+    <br>
+    <!--给标签赋值-->
+    <h3 th:text="${username}"></h3>
+    <br>
+    <!--给属性赋值-->
+    <input type="text" name="name" th:value="${username}">
+    <br>
+    <em th:size="${username}"></em>
+    <br>
+    <!--字符串拼接 1-->
+    <span th:text="'欢迎：'+${username}+' ，来学习！'"></span>
+    <br>
+    <!--2-->
+    <span th:text="|欢迎：${username}，来学习！|"></span>
+    <a th:href="${href}">点一点</a>
+    <br>
+    ==========================判断、选择==============================
+    <br>
+    <!--条件成立显示-->
+    <h1 th:if="${flag=='yes'}">小红鞠</h1>
+    <!--条件不成立显示-->
+    <h1 th:unless="${flag=='no'}">胡老大</h1>
+    <!--switch选择语句-->
+    <div th:switch="${menu}">
+        <p th:case="'admin'">用户是admin</p>
+        <p th:case="${manager}">用户是manager</p>
+    </div>
+
+    <!--片段插入当前-->
+    <div th:insert="~{aaa/foot :: copy}"></div>
+    <!--片段替换当前标签-->
+    <div th:replace="~{aaa/foot::copy}"></div>
+    <!--保留自己主标签，不要片段的主标签-->
+    <div th:include="~{aaa/foot::copy}"></div>
+
+    ===================内置工具对象==================================
+    <br>
+    时间：<span th:text="${#dates.format(date,'yyyy-MM-dd HH:mm:ss')}">格式化时间</span>
+    <br>
+    金额：<span th:text="'￥'+${#numbers.formatDecimal(price,1,2)}">价格保留两位小数</span>
+    <br>
+    <p th:text="${#strings.abbreviate(str,200)}">大文本显示200字，后边显示...</p>
+    <br>
+    <span th:if="${!#strings.isEmpty(str2)}">字符串str2不为空</span>
+    <br>
+    <span th:text="${#strings.substring(str2,0,4)}">截取str2</span>
+</body>
+</html>
