@@ -4,6 +4,5 @@ public class Car {
 
     private Long id;
     private String name;
-    private double price;
-
+    //删除属性
 }
