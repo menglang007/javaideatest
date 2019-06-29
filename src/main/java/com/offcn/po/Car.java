@@ -7,6 +7,7 @@ public class Car {
     //删除属性
 	//editplush中新增方法
 	public String demo1(){
-		system.out.println("demo1");
+		System.out.println("demo1");
+		return "edit";
 	}
 }
