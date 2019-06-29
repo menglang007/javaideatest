@@ -8,6 +8,6 @@ public class Car {
 	//editplush中新增方法
 	public String demo1(){
 		System.out.println("demo1");
-		return "idea";
+		return "edit";
 	}
 }
